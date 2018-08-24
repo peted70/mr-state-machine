@@ -31,7 +31,7 @@ public class StateManager : MonoBehaviour
         }
 
         var prev = _currentState;
-        _currentState = States[++_index];
+        _currentState = States[++_index % States.Count];
         prev.StateExit();
         _currentState.StateEnter();
     }

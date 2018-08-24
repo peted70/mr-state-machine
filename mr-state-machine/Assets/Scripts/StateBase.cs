@@ -15,6 +15,7 @@ public class StateBase : MonoBehaviour
     public virtual void StateEnter()
     {
         Debug.Log("State Enter: " + Name);
+        Completed = false;
         gameObject.SetActive(true);
     }
 

@@ -1,11 +1,40 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
 using UnityEngine;
 
-public class StateManager : MonoBehaviour
+[Serializable]
+public class StateManager : MonoBehaviour, INotifyPropertyChanged
 {
+    [SerializeField]
     public List<StateBase> States;
+
+    [SerializeField]
     private StateBase _currentState;
+
+    public StateBase CurrentState
+    {
+        get { return _currentState; }
+        set
+        {
+            if (_currentState.GetInstanceID() == value.GetInstanceID())
+                return;
+            _currentState = value;
+            FirePropertyChanged("CurrentState");
+        }
+    }
+
+    [SerializeField]
     private int _index = 0;
+
+    public event PropertyChangedEventHandler PropertyChanged;
+
+    public void FirePropertyChanged(string propertyName)
+    {
+        if (PropertyChanged == null)
+            return;
+        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
+    }
 
     // Use this for initialization
     void Start()
@@ -15,7 +44,7 @@ public class StateManager : MonoBehaviour
         if (_currentState == null)
         {
             _currentState = States[_index];
-            _currentState.StateEnter();
+            _currentState.StateEnter(this);
         }
     }
 
@@ -25,15 +54,15 @@ public class StateManager : MonoBehaviour
 
         if (_currentState == null)
         {
-            _currentState = States[_index];
-            _currentState.StateEnter();
+            CurrentState = States[_index];
+            CurrentState.StateEnter(this);
             return;
         }
 
         var prev = _currentState;
-        _currentState = States[++_index % States.Count];
-        prev.StateExit();
-        _currentState.StateEnter();
+        CurrentState = States[++_index % States.Count];
+        prev.StateExit(this);
+        _currentState.StateEnter(this);
     }
 
     // Update is called once per frame
@@ -45,6 +74,6 @@ public class StateManager : MonoBehaviour
         if (_currentState.Completed)
             GoToNextState();
         else
-            _currentState.UpdateState();
+            _currentState.UpdateState(this);
     }
 }

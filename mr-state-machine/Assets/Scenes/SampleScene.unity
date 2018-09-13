@@ -154,7 +154,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitions: []
+  IsCurrent: 0
+  windowRect:
+    serializedVersion: 2
+    x: 613
+    y: 84
+    width: 200
+    height: 120
   Completed: 0
+  Name: DelayState3
+  WaitFor: 2
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -339,7 +349,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitions: []
+  IsCurrent: 0
+  windowRect:
+    serializedVersion: 2
+    x: 89
+    y: 81
+    width: 200
+    height: 120
   Completed: 0
+  Name: DelayState1
+  WaitFor: 2
 --- !u!1 &1186769603
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,7 +846,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  transitions: []
+  IsCurrent: 0
+  windowRect:
+    serializedVersion: 2
+    x: 354
+    y: 83
+    width: 200
+    height: 120
   Completed: 0
+  Name: DelayState2
+  WaitFor: 2
 --- !u!1 &2113393054
 GameObject:
   m_ObjectHideFlags: 0

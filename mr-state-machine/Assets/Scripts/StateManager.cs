@@ -65,14 +65,40 @@ public class StateManager : MonoBehaviour, INotifyPropertyChanged
         _currentState.StateEnter(this);
     }
 
+    private void GoToState(StateBase state)
+    {
+        int idx = States.IndexOf(state);
+        if (idx == -1)
+            throw new Exception("Error: Trying to go to unknown state");
+        _index = idx;
+
+        if (_currentState == null)
+        {
+            CurrentState = state;
+            CurrentState.StateEnter(this);
+            return;
+        }
+
+        var prev = _currentState;
+        CurrentState = state;
+        prev.StateExit(this);
+        _currentState.StateEnter(this);
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (_currentState == null)
             return;
 
-        if (_currentState.Completed)
-            GoToNextState();
+        var state = _currentState.IsCompleted();
+
+        if (state != null)
+        {
+            GoToState(state);
+        }
+        //if (_currentState.Completed)
+        //    GoToNextState();
         else
             _currentState.UpdateState(this);
     }

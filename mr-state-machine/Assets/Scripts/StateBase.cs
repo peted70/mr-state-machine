@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
-
-//[RequireComponent(typeof(Trigger))]
 
 [Serializable]
 public class StateBase : MonoBehaviour
@@ -34,6 +33,8 @@ public class StateBase : MonoBehaviour
         IsCurrent = true;
         Debug.Log("State Enter: " + Name);
         Completed = false;
+
+        transitions.ForEach(t => t.Init(this));
         gameObject.SetActive(true);
     }
 
@@ -42,11 +43,24 @@ public class StateBase : MonoBehaviour
         IsCurrent = false;
         Debug.Log("State Exit: " + Name);
         gameObject.SetActive(false);
+        transitions.ForEach(t => t.Reset());
     }
 
     public virtual void UpdateState(StateManager manager)
     {
 
+    }
+
+    public virtual StateBase IsCompleted()
+    {
+        StateBase res = null;
+        foreach (var transition in transitions)
+        {
+            res = transition.IsCompleted();
+            if (res != null)
+                return res;
+        }
+        return res;
     }
 
     public void ProcessEvents(Event e)

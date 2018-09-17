@@ -7,6 +7,9 @@ using UnityEngine;
 [Serializable]
 public class StateMachineEditor : EditorWindow
 {
+    private Texture2D backgroundTexture;
+    private GUIStyle textureStyle;
+
     public StateMachineEditor()
     {
 
@@ -94,6 +97,9 @@ public class StateMachineEditor : EditorWindow
 
     public void Awake()
     {
+        backgroundTexture = Texture2D.whiteTexture;
+        textureStyle = new GUIStyle { normal = new GUIStyleState { background = backgroundTexture } };
+
         // Find the currently selected GameObject...
         var selected = Selection.activeGameObject;
         StateManager sm = null;
@@ -156,7 +162,6 @@ public class StateMachineEditor : EditorWindow
 
         Draw();
 
-
         ProcessEvents(Event.current);
 
         if (GUI.changed)
@@ -164,13 +169,13 @@ public class StateMachineEditor : EditorWindow
 
     }
 
-    //private void Update()
-    //{
-    //    if (StateMachine == null || StateMachine.States == null)
-    //        return;
-    //    Repaint();
-    //    //Draw();    
-    //}
+    public void DrawRect(Rect position, Color color, GUIContent content = null)
+    {
+        var backgroundColor = GUI.backgroundColor;
+        GUI.backgroundColor = color;
+        GUI.Box(position, content ?? GUIContent.none, textureStyle);
+        GUI.backgroundColor = backgroundColor;
+    }
 
     private void Draw()
     {
@@ -202,6 +207,9 @@ public class StateMachineEditor : EditorWindow
             }
 
             GUILayoutUtility.GetRect(state.windowRect.width, state.windowRect.height);
+
+            
+            DrawRect(state.windowRect, state.IsCurrent ? Color.green : Color.blue, new GUIContent(state.Name));
             GUI.Box(state.windowRect, state.Name);
             //GUILayout.Box(state.Name, GUILayout.Width(state.windowRect.width), GUILayout.Height(state.windowRect.height));
         }

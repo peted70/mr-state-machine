@@ -7,7 +7,7 @@ using UnityEngine;
 public class StateBase : MonoBehaviour
 {
     [SerializeField]
-    private List<Transition> transitions = new List<Transition>();
+    public List<Transition> transitions = new List<Transition>();
 
     [HideInInspector]
     public bool IsCurrent = false;

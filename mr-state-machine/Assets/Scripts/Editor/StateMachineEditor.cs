@@ -125,9 +125,6 @@ public class StateMachineEditor : EditorWindow
     {
         Debug.Log("OnGUI");
 
-        //Handles.BeginGUI();
-        //Handles.DrawBezier(windowRect.center, windowRect2.center, new Vector2(windowRect.xMax + 50f, windowRect.center.y), new Vector2(windowRect2.xMin - 50f, windowRect2.center.y), Color.red, null, 5f);
-        //Handles.EndGUI();
         if (_stateMachine == null)
         {
             var selected = Selection.activeGameObject;
@@ -161,6 +158,7 @@ public class StateMachineEditor : EditorWindow
         }
 
         Draw();
+        DrawHandles();
 
         ProcessEvents(Event.current);
 
@@ -223,6 +221,23 @@ public class StateMachineEditor : EditorWindow
         //GUILayout.EndArea();
 
         EndWindows();
+    }
+
+    public void DrawHandles()
+    {
+        foreach (var state in _stateMachine.States)
+        {
+            foreach (var transition in state.transitions)
+            {
+                Handles.BeginGUI();
+                Handles.DrawBezier(new Vector3(state.windowRect.xMax, state.windowRect.center.y),
+                    new Vector3(transition.targetState.windowRect.xMin, transition.targetState.windowRect.center.y),
+                    new Vector2(state.windowRect.xMax + 50f, state.windowRect.center.y), 
+                    new Vector2(transition.targetState.windowRect.xMin - 50f, transition.targetState.windowRect.center.y), 
+                    Color.red, null, 5f);
+                Handles.EndGUI();
+            }
+        }
     }
 
     void OnSelectionChange()

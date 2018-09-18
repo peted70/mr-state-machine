@@ -180,7 +180,6 @@ public class StateMachineEditor : EditorWindow
         BeginWindows();
 
         GUI.backgroundColor = Color.red;
-        GUIStyle gsTest = new GUIStyle();
 
         // GUILayout.BeginArea(new Rect(0, 0, position.width / 2, position.height));
 
@@ -227,8 +226,9 @@ public class StateMachineEditor : EditorWindow
     {
         foreach (var state in _stateMachine.States)
         {
-            foreach (var transition in state.transitions)
+            foreach (var action in state.Actions)
             {
+                var transition = action.transition;
                 Handles.BeginGUI();
                 Handles.DrawBezier(new Vector3(state.windowRect.xMax, state.windowRect.center.y),
                     new Vector3(transition.targetState.windowRect.xMin, transition.targetState.windowRect.center.y),

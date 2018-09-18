@@ -6,7 +6,9 @@ using UnityEngine;
 public class StateBase : MonoBehaviour
 {
     [SerializeField]
-    public List<Transition> transitions = new List<Transition>();
+    public List<StateAction> Actions;
+
+    //public List<Transition> transitions = new List<Transition>();
 
     [HideInInspector]
     public bool IsCurrent = false;
@@ -33,7 +35,8 @@ public class StateBase : MonoBehaviour
         Debug.Log("State Enter: " + Name);
         Completed = false;
 
-        transitions.ForEach(t => t.Init(this));
+        Actions.ForEach(a => a.Init(this));
+        //transitions.ForEach(t => t.Init(this));
         gameObject.SetActive(true);
     }
 
@@ -42,7 +45,8 @@ public class StateBase : MonoBehaviour
         IsCurrent = false;
         Debug.Log("State Exit: " + Name);
         gameObject.SetActive(false);
-        transitions.ForEach(t => t.Reset());
+        //transitions.ForEach(t => t.Reset());
+        Actions.ForEach(a => a.Reset());
     }
 
     public virtual void UpdateState(StateManager manager)
@@ -52,14 +56,15 @@ public class StateBase : MonoBehaviour
 
     public virtual StateBase IsCompleted()
     {
-        StateBase res = null;
-        foreach (var transition in transitions)
+        foreach (var action in Actions)
         {
-            res = transition.IsCompleted();
-            if (res != null)
-                return res;
+            var transition = action.IsCompleted();
+            if (transition != null)
+            {
+                return transition.targetState;
+            }
         }
-        return res;
+        return null;
     }
 
     public void ProcessEvents(Event e)

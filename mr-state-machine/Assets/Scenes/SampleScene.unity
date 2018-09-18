@@ -123,6 +123,7 @@ GameObject:
   - component: {fileID: 159440369}
   - component: {fileID: 159440370}
   - component: {fileID: 159440371}
+  - component: {fileID: 159440372}
   m_Layer: 0
   m_Name: State 3
   m_TagString: Untagged
@@ -152,21 +153,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 159440368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7129b4167777c1c4aa4fafbd7c0ab687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitions:
+  Actions:
   - {fileID: 159440371}
   IsCurrent: 0
   windowRect:
     serializedVersion: 2
-    x: 613
-    y: 84
+    x: 100
+    y: 100
     width: 200
     height: 120
   Completed: 0
-  Name: DelayState3
-  WaitFor: 2
+  Name: State 3
 --- !u!114 &159440371
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -175,12 +175,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 159440368}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71364cc207c6e834d94164c242016ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: f2d2f62a34c74fc48860c4439cb5c4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggers: []
+  transition: {fileID: 159440372}
+  WaitFor: 2
+--- !u!114 &159440372
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 159440368}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8b3bcdffd5dd249a46c4cf13a04b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetState: {fileID: 679168131}
-  WaitFor: 1.5
 --- !u!1 &170076733
 GameObject:
   m_ObjectHideFlags: 0
@@ -334,6 +345,7 @@ GameObject:
   - component: {fileID: 679168130}
   - component: {fileID: 679168131}
   - component: {fileID: 679168132}
+  - component: {fileID: 679168133}
   m_Layer: 0
   m_Name: State 1
   m_TagString: Untagged
@@ -363,21 +375,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 679168129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7129b4167777c1c4aa4fafbd7c0ab687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitions:
+  Actions:
   - {fileID: 679168132}
   IsCurrent: 0
   windowRect:
     serializedVersion: 2
-    x: 89
-    y: 81
+    x: 100
+    y: 100
     width: 200
     height: 120
   Completed: 0
-  Name: DelayState1
-  WaitFor: 2
+  Name: State 1
 --- !u!114 &679168132
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -386,12 +397,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 679168129}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71364cc207c6e834d94164c242016ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: f2d2f62a34c74fc48860c4439cb5c4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggers: []
+  transition: {fileID: 679168133}
+  WaitFor: 2
+--- !u!114 &679168133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 679168129}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8b3bcdffd5dd249a46c4cf13a04b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetState: {fileID: 1997659037}
-  WaitFor: 6
 --- !u!1 &1186769603
 GameObject:
   m_ObjectHideFlags: 0
@@ -849,6 +871,7 @@ GameObject:
   - component: {fileID: 1997659036}
   - component: {fileID: 1997659037}
   - component: {fileID: 1997659038}
+  - component: {fileID: 1997659039}
   m_Layer: 0
   m_Name: State 2
   m_TagString: Untagged
@@ -878,21 +901,20 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997659035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ae1dc247b953e264d86dd44512db139e, type: 3}
+  m_Script: {fileID: 11500000, guid: 7129b4167777c1c4aa4fafbd7c0ab687, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  transitions:
+  Actions:
   - {fileID: 1997659038}
   IsCurrent: 0
   windowRect:
     serializedVersion: 2
-    x: 354
-    y: 83
+    x: 100
+    y: 100
     width: 200
     height: 120
   Completed: 0
-  Name: DelayState2
-  WaitFor: 2
+  Name: State 2
 --- !u!114 &1997659038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,12 +923,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 1997659035}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 71364cc207c6e834d94164c242016ae1, type: 3}
+  m_Script: {fileID: 11500000, guid: f2d2f62a34c74fc48860c4439cb5c4ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  triggers: []
+  transition: {fileID: 1997659039}
+  WaitFor: 1
+--- !u!114 &1997659039
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1997659035}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ce8b3bcdffd5dd249a46c4cf13a04b43, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   targetState: {fileID: 159440370}
-  WaitFor: 2
 --- !u!1 &2113393054
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,17 +1,21 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class DelayTransition : Transition
+public class DelayStateAction : StateAction
 {
     [Range(0.0f, 300.0f)]
     public float WaitFor = 2.0f;
 
     private bool _completed;
 
-    public override StateBase IsCompleted()
+    public override IEnumerable<StateAction> Children()
     {
-        return _completed ? targetState : null;
+        return null;
+    }
+
+    public override Transition IsCompleted()
+    {
+        return _completed ? transition : null;
     }
 
     public override void Init(StateBase parent)
@@ -28,4 +32,3 @@ public class DelayTransition : Transition
         _completed = false;
     }
 }
-

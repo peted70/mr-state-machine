@@ -97,9 +97,9 @@ public class StateManager : MonoBehaviour, INotifyPropertyChanged
         {
             GoToState(state);
         }
-        //if (_currentState.Completed)
-        //    GoToNextState();
         else
+        {
             _currentState.UpdateState(this);
+        }
     }
 }

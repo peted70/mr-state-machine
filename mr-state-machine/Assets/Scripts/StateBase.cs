@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 [Serializable]
@@ -89,13 +88,6 @@ public class StateBase : MonoBehaviour
                     e.Use();
                 }
                 break;
-
-
-            //case EventType.MouseDrag:
-            //    windowRect.position += e.delta;
-            //    e.Use();
-            //    break;
-
         }
     }
 }

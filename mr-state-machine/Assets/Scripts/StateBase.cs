@@ -56,11 +56,14 @@ public class StateBase : MonoBehaviour
 
     public virtual StateBase IsCompleted()
     {
+        // use the transition associated with the action that finishes first. If
+        // you require other behaviour then use a composite action..
         foreach (var action in Actions)
         {
-            var transition = action.IsCompleted();
-            if (transition != null)
+            bool complete = action.IsCompleted();
+            if (complete == true)
             {
+                var transition = action.transition;
                 return transition.targetState;
             }
         }

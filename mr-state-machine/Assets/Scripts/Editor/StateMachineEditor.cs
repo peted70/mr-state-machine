@@ -207,7 +207,7 @@ public class StateMachineEditor : EditorWindow
 
             
             DrawRect(state.windowRect, state.IsCurrent ? Color.green : Color.blue, new GUIContent(state.Name));
-            GUI.Box(state.windowRect, state.Name);
+            //GUI.Box(state.windowRect, state.Name);
             //GUILayout.Box(state.Name, GUILayout.Width(state.windowRect.width), GUILayout.Height(state.windowRect.height));
         }
 
@@ -228,7 +228,15 @@ public class StateMachineEditor : EditorWindow
         {
             foreach (var action in state.Actions)
             {
+                if (action == null)
+                {
+                    Debug.Log("Action is null");
+                    continue;
+                }
                 var transition = action.transition;
+                if (transition == null)
+                    continue;
+
                 Handles.BeginGUI();
                 Handles.DrawBezier(new Vector3(state.windowRect.xMax, state.windowRect.center.y),
                     new Vector3(transition.targetState.windowRect.xMin, transition.targetState.windowRect.center.y),

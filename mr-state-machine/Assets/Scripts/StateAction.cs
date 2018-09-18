@@ -6,7 +6,7 @@ public abstract class StateAction : MonoBehaviour
 {
     public Transition transition;
 
-    public abstract Transition IsCompleted();
+    public abstract bool IsCompleted();
 
     public virtual void Init(StateBase parent) { }
 

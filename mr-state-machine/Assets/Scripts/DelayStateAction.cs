@@ -13,9 +13,9 @@ public class DelayStateAction : StateAction
         return null;
     }
 
-    public override Transition IsCompleted()
+    public override bool IsCompleted()
     {
-        return _completed ? transition : null;
+        return _completed;
     }
 
     public override void Init(StateBase parent)

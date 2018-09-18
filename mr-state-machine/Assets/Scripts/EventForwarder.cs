@@ -129,7 +129,8 @@ public class EventForwarder : MonoBehaviour
 
     public void OnCollisionEnter(Collision collision)
     {
-        OnCollisionEnterEvent(collision);
+        //OnCollisionEnterEvent(collision);
+        ONCOLLISION.Invoke(collision);
     }
 
     public void OnCollisionEnter2D(Collision2D collision)

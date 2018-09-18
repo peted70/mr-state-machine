@@ -655,6 +655,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   transition: {fileID: 1118113717}
+  _event: 11
 --- !u!114 &1118113719
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -671,8 +672,8 @@ MonoBehaviour:
   IsCurrent: 0
   windowRect:
     serializedVersion: 2
-    x: 695
-    y: 31
+    x: 705
+    y: 35
     width: 200
     height: 120
   Completed: 0

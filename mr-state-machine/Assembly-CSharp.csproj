@@ -66,6 +66,7 @@
     <Compile Include="Assets\Scripts\DelayStateAction.cs" />
     <Compile Include="Assets\Scripts\EventForwarder.cs" />
     <Compile Include="Assets\Scripts\Extensions.cs" />
+    <Compile Include="Assets\Scripts\OnEventAction.cs" />
     <Compile Include="Assets\Scripts\StateAction.cs" />
     <Compile Include="Assets\Scripts\StateBase.cs" />
     <Compile Include="Assets\Scripts\StateManager.cs" />

@@ -12,6 +12,8 @@ public class EventForwarder : MonoBehaviour
     public UnityEvent LATEUPDATEEVENT;
 
     public UnityEvent<int> ONANIMATORIK;
+    public UnityEvent<Collision> ONCOLLISION;
+
 
     //public event EventHandler0 AwakeEvent = () => { };
     //public event EventHandler0 FixedUpdateEvent = () => { };
